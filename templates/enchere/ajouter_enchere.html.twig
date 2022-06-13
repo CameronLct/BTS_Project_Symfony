@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une Enchere{% endblock %}
+
+{% block body %}
+
+{{ include('navbar/navbar.html.twig')}}
+
+<h1 class="text-center">Ajouter une Enchère</h1>
+<div class="container">
+
+   {% if dernierPanierGlobal.id == derniereenchere.idPanierGlobal %}
+      <h3>Une enchère est déjà en cours pour cette semaine</h3>
+   {% else %}
+      <h3>Il n'existe pas encore d'enchère pour cette semaine</h3>
+   {% endif %}
+
+   <p>Semaine actuelle: {{ semaineactuelle+1 }}</p>
+   <p>Semaine du dernier panier global: {{ dernierPanierGlobal.semaine }}</p>
+   <p>ID du dernier panier global: {{ dernierPanierGlobal.id }}</p>
+
+   <div class="form-group">
+      {{ form_start(form) }}
+      {{ form_widget(form) }}
+      <button type="submit" class="btn btn-success">Ajouter</button>
+      {{ form_end(form) }}
+   </div>
+</div>
+
+{% endblock %}
